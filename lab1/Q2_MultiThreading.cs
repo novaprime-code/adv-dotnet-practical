@@ -1,65 +1,40 @@
-using System.Threading;
 using System;
+using System.Threading;
 class Q2_MultiThreading
 {
-    static void Main(string[] args)
+    public static void Main()
     {
-        Console.WriteLine("Main Thread Started");
-
-        //Creating Threads
-        Thread t1 = new Thread(Method1)
+        Console.WriteLine("################  ADV. .NET Lab Practical  ################");
+        Console.WriteLine("##############  Inheritance and Constructor  ##############\n");
+        //Creating the WorkerThread with the help of Thread class.    
+        Thread ThreadObject1 = new Thread(WorkerThread);
+        ThreadObject1.Start(); //Starting the Thread    
+        //ThreadObject1.Join(); //Using Join to block the current Thread    
+        Console.WriteLine("1. MainThread Started");
+        for (int i = 0; i <= 3; i++)
         {
-            Name = "Thread1"
-        };
-        Thread t2 = new Thread(Method2)
-        {
-            Name = "Thread2"
-        };
-        Thread t3 = new Thread(Method3)
-        {
-            Name = "Thread3"
-        };
-
-        //Executing the methods
-        t1.Start();
-        t2.Start();
-        t3.Start();
-        Console.WriteLine("Main Thread Ended");
-        Console.Read();
-    }
-    static void Method1()
-    {
-        Console.WriteLine("Method1 Started using " + Thread.CurrentThread.Name);
-        for (int i = 1; i <= 5; i++)
-        {
-            Console.WriteLine("Method1 :" + i);
+            Console.WriteLine("-> MainThread Executing");
+            Thread.Sleep(3000); //Here 5000 is 5000 Milli Seconds means 5 Seconds    
         }
-        Console.WriteLine("Method1 Ended using " + Thread.CurrentThread.Name);
+        // We are calling the Name of Current running Thread using CurrentThread    
+        Thread Th = Thread.CurrentThread;
+        Th.Name = "Main Thread";
+        Console.WriteLine("\nGetting the Name of Currently running Thread");
+        //Name Property is used to get the name of the current Thread    
+        Console.WriteLine("Current Thread Name is: " + Th.Name);
+        //Priority Property is used to display the Priority of current Thread    
+        Console.WriteLine("Current Thread Priority is: " + Th.Priority);
     }
-
-    static void Method2()
+    static void WorkerThread()
     {
-        Console.WriteLine("Method2 Started using " + Thread.CurrentThread.Name);
-        for (int i = 1; i <= 5; i++)
+        Console.WriteLine("2. WorkerThread Started");
+        for (int i = 0; i <= 3; i++)
         {
-            Console.WriteLine("Method2 :" + i);
-            if (i == 3)
-            {
-                Console.WriteLine("Performing the Database Operation Started");
-                //Sleep for 10 seconds
-                Thread.Sleep(10000);
-                Console.WriteLine("Performing the Database Operation Completed");
-            }
+            Console.WriteLine("-> WorkerThread Executing");
+            Console.WriteLine("Child Thread Paused");
+            //Sleep method is used to pause the Thread for a specific period    
+            Thread.Sleep(3000);
+            Console.WriteLine("Child Thread Resumed");
         }
-        Console.WriteLine("Method2 Ended using " + Thread.CurrentThread.Name);
-    }
-    static void Method3()
-    {
-        Console.WriteLine("Method3 Started using " + Thread.CurrentThread.Name);
-        for (int i = 1; i <= 5; i++)
-        {
-            Console.WriteLine("Method3 :" + i);
-        }
-        Console.WriteLine("Method3 Ended using " + Thread.CurrentThread.Name);
     }
 }
