@@ -5,6 +5,8 @@ class Program
 {
     static void Main(string[] args)
     {
+        Console.WriteLine("################  ADV. .NET Lab Practical  ################");
+        Console.WriteLine("##############  File I/O Ops  ##############\n");
         try
         {
             // Specify the path to the text file

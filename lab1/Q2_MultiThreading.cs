@@ -5,7 +5,7 @@ class Q2_MultiThreading
     public static void Main()
     {
         Console.WriteLine("################  ADV. .NET Lab Practical  ################");
-        Console.WriteLine("##############  Inheritance and Constructor  ##############\n");
+        Console.WriteLine("##############  Multi Threading  ##############\n");
         //Creating the WorkerThread with the help of Thread class.    
         Thread ThreadObject1 = new Thread(WorkerThread);
         ThreadObject1.Start(); //Starting the Thread    
