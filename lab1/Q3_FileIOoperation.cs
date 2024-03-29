@@ -21,13 +21,22 @@ class Program
 
             // Read all lines from the text file
             string[] lines = File.ReadAllLines(filePath);
+            int wordCount = 0;
+
 
             // Display the content of the file
             Console.WriteLine("Content of the text file:");
             foreach (string line in lines)
             {
                 Console.WriteLine(line);
+                string[] words = line.Split(' ');
+                wordCount += words.Length;
             }
+            //count the number of lines
+            Console.WriteLine("Number of lines in the file: " + lines.Length);
+            //count the number of words
+            Console.WriteLine("Number of words in the file: " + wordCount);
+
         }
         catch (FileNotFoundException)
         {
